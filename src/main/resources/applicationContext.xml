@@ -14,6 +14,8 @@
     <bean id="musicPlayer"
           class="org.example.springcourse.MusicPlayer">
         <property  name="music" ref="musicBean"/>
+        <property name="name" value="Serhii"/>
+        <property name="volume" value="48"/>
     </bean>
 
 </beans>
