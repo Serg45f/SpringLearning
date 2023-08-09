@@ -10,20 +10,29 @@
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <bean id="musicBeanClassic"
-          class="org.example.springcourse.ClassicalMusic">
+          class="org.example.springcourse.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
     </bean>
 
     <bean id="musicBeanRock"
-          class="org.example.springcourse.RockMusic">
+          class="org.example.springcourse.RockMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
     </bean>
 
     <bean id="musicBeanLounge"
-          class="org.example.springcourse.LoungeMusic">
+          class="org.example.springcourse.LoungeMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
     </bean>
 
     <bean id="musicPlayer"
           class="org.example.springcourse.MusicPlayer"
-            scope="prototype">
+            scope="prototype"
+
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
 
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
