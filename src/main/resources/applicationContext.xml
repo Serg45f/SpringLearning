@@ -12,7 +12,8 @@
     <bean id="musicBeanClassic"
           class="org.example.springcourse.ClassicalMusic"
           init-method="doMyInit"
-          destroy-method="doMyDestroy">
+          destroy-method="doMyDestroy"
+          factory-method="getClassicalMusic">
     </bean>
 
     <bean id="musicBeanRock"
