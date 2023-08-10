@@ -1,38 +1,42 @@
 package org.example.springcourse;
 
+import org.example.springcourse.genres.ClassicalMusic;
+import org.example.springcourse.genres.LoungeMusic;
+import org.example.springcourse.genres.RockMusic;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Random;
 
 @Component
 public class MusicPlayer {
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
-    private LoungeMusic loungeMusic;
+    @Value("${musicPlayer.name}")
+    private String name;
 
-    @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, LoungeMusic loungeMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
-        this.loungeMusic = loungeMusic;
+    @Value("${musicPlayer.volume}")
+    private int volume;
+
+    private List<Music> musicList;
+
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    public void playMusic(MusicGenre genre) {
+    public String getName() {
+        return name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public String playMusic() {
         Random random = new Random();
 
-        int rand = random.nextInt(3);
-
-        if(genre == MusicGenre.CLASSICAL) {
-            System.out.println(classicalMusic.getSongs().get(rand));
-        }
-        if (genre == MusicGenre.ROCK) {
-            System.out.println(rockMusic.getSongs().get(rand));
-        }
-        if (genre == MusicGenre.LOUNGE) {
-            System.out.println(loungeMusic.getSongs().get(rand));
-        }
+        return "Playing: " + musicList.get(random.nextInt(musicList.size())).getSong()
+                + " with volume " + this.volume;
     }
 
 }
