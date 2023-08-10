@@ -1,13 +1,9 @@
 package org.example.springcourse;
 
-public class RockMusic implements Music{
-    public void doMyInit() {
-        System.out.println("Doing my initialization");
-    }
+import org.springframework.stereotype.Component;
 
-    public void doMyDestroy() {
-        System.out.println("Doing my destruction");
-    }
+@Component("rockMusicBean")
+public class RockMusic implements Music{
     @Override
     public String getSong() {
         return "Wind cries Mary";
