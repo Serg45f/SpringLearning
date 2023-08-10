@@ -26,8 +26,11 @@ public class TestSpring {
 //
 //        loungeMusicPlayer.playMusic();
 
-        Computer computer = context.getBean("computer", Computer.class);
-        System.out.println(computer);
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+
+        musicPlayer.playMusic(MusicGenre.CLASSICAL);
+        musicPlayer.playMusic(MusicGenre.ROCK);
+        musicPlayer.playMusic(MusicGenre.LOUNGE);
 
         context.close();
     }
